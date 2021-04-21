@@ -1,0 +1,170 @@
+TeamID;FirstName;Surname;Age;Position
+15;Lewis;Dunk  ;29;defender 
+10;Jimmy;Dunne  ;23;defender 
+17;Frankie;Ealing  ;17;defender 
+2;Ederson;Ederson;28;goalkeeper
+19;Kyle;Edwards  ;23;forward
+9;John;Egan  ;28;defender 
+17;Anwar;El Ghazi ;26;forward
+3;Anthony;Elanga  ;19;forward
+17;Ahmed;Elmohamady  ;34;defender 
+8;Mohamed;Elneny  ;29;midfielder
+4;Emerson;Emerson;27;defender 
+17;Björn;Engels  ;27;defender 
+2;Eric;García  ;20;defender 
+5;Jonny;Evans  ;33;defender 
+14;Eberechi;Eze  ;23;midfielder
+16;Łukasz;Fabiański  ;36;goalkeeper
+1;Fabinho;Fabinho;27;midfielder
+7;Fábio;Silva  ;19;forward
+20;Fabricio;Fabricio;33;goalkeeper
+14;Nathan;Ferguson  ;21;defender 
+13;Federico;Fernández  ;32;defender 
+2;Fernandinho;Fernandinho;36;midfielder
+2;Ferrán;Torres  ;21;forward
+11;Will;Ferry  ;19;forward
+11;Ryan;Finnigan  ;18;midfielder
+5;Ethan;Fitzhugh  ;18;midfielder
+9;John;Fleck  ;30;midfielder
+5;Shane;Flynn  ;20;midfielder
+2;Phil;Foden  ;21;midfielder
+9;Wesley;Foderingham  ;30;goalkeeper
+5;Wesley;Fofana  ;20;defender 
+18;Adam;Forshaw  ;30;midfielder
+11;Fraser;Forster  ;33;goalkeeper
+20;Tyrese;Francois  ;21;midfielder
+13;Ryan;Fraser  ;27;forward
+3;Fred;Fred;28;midfielder
+16;Ryan;Fredericks  ;29;defender 
+5;Christian;Fuchs  ;35;defender 
+19;Darnell;Furlong  ;25;defender 
+8;Gabriel;Gabriel;23;defender 
+2;Gabriel;Jesus  ;24;forward
+8;Gabriel;Martinelli  ;20;forward
+3;Ethan;Galbraith  ;20;midfielder
+19;Conor;Gallagher  ;21;midfielder
+13;Dwight;Gayle  ;31;forward
+12;Jean-Philippe;Gbamin  ;26;midfielder
+18;Joe;Gelhardt  ;19;forward
+19;Kieran;Gibbs  ;32;defender 
+7;Morgan;Gibbs-White  ;21;midfielder
+13;Mark;Gillespie  ;29;goalkeeper
+4;Billy;Gilmour  ;20;midfielder
+4;Olivier;Giroud  ;35;forward
+1;Paul;Glatzel  ;20;forward
+12;Ben;Godfrey  ;23;defender 
+2;Claudio;Gomes  ;21;midfielder
+1;Joe;Gomez  ;24;defender 
+10;Anthony;Gomez Mancini ;20;midfielder
+14;John-Kymani;Gordon  ;18;forward
+9;Kyron;Gordon  ;19;defender 
+19;Karlan;Grant  ;24;forward
+3;Lee;Grant  ;38;goalkeeper
+17;Jack;Grealish  ;26;forward
+3;Mason;Greenwood  ;20;forward
+18;Sam;Greenwood  ;19;forward
+19;Kamil;Grosicki  ;33;forward
+15;Pascal;Groß  ;30;midfielder
+14;Guaita;Guaita;34;goalkeeper
+10;Jóhann;Guðmundsson  ;30;forward
+2;İlkay;Gündoğan  ;30;midfielder
+15;Peter;Gwargis  ;21;forward
+9;Antwoine;Hackford  ;17;forward
+14;Reece;Hannam  ;21;defender 
+19;George;Harmon  ;20;defender 
+18;Jack;Harrison  ;24;midfielder
+6;Joe;Hart  ;34;goalkeeper
+17;Kortney;Hause  ;26;defender 
+4;Kai;Havertz  ;22;midfielder
+13;Isaac;Hayden  ;26;midfielder
+17;Tom;Heaton  ;35;goalkeeper
+20;Michael;Hector  ;29;defender 
+8;Héctor;Bellerín  ;26;defender 
+8;Karl;Jakob Hein ;19;goalkeeper
+18;Hélder;Costa  ;27;forward
+3;Dean;Henderson  ;24;goalkeeper
+1;Jordan;Henderson  ;31;midfielder
+14;Stephen;Henderson  ;33;goalkeeper
+13;Jeff;Hendrick  ;29;midfielder
+14;Wayne;Hennessey  ;34;goalkeeper
+7;Ki-Jana;Hoever  ;19;defender 
+8;Rob;Holding  ;26;defender 
+12;Mason;Holgate  ;24;defender 
+16;Nathan;Holland  ;23;forward
+6;Pierre-Emile;Højbjerg  ;26;midfielder
+4;Callum;Hudson-Odoi  ;20;forward
+18;Niall;Huggins  ;20;forward
+1;Liam;Hughes  ;20;goalkeeper
+7;Hugo;Bueno  ;19;defender 
+5;Kelechi;Iheanacho  ;25;forward
+11;Danny;Ings  ;29;forward
+20;Ivan;Cavaleiro  ;28;forward
+19;Branislav;Ivanović  ;37;defender 
+12;Alex;Iwobi  ;25;forward
+15;José;Izquierdo  ;29;forward
+9;Phil;Jagielka  ;39;defender 
+15;Alireza;Jahanbakhsh  ;28;forward
+5;Eldin;Jakupović  ;37;goalkeeper
+3;Daniel;James  ;23;forward
+4;Reece;James  ;21;defender 
+11;Alexandre;Jankewitz  ;19;midfielder
+20;Sylvester;Jasper  ;20;forward
+17;Taylor;Jay-Hart  ;17;midfielder
+18;Jack;Jenkins  ;19;midfielder
+15;Teddy;Jenks  ;19;midfielder
+7;Raúl;Jiménez  ;30;forward
+2;João;Cancelo  ;27;defender 
+7;João;Moutinho  ;35;midfielder
+12;João;Virgínia  ;22;goalkeeper
+8;Joel;López  ;19;defender 
+13;Joelinton;Joelinton;25;forward
+12;Kyle;John  ;20;defender 
+16;Ben;Johnson  ;21;defender 
+19;Sam;Johnstone  ;28;goalkeeper
+1;Curtis;Jones  ;20;midfielder
+3;Phil;Jones  ;29;defender 
+7;Jonny;Jonny;27;defender 
+4;Jorginho;Jorginho;29;midfielder
+5;James;Justin  ;23;defender 
+1;Ozan;Kabak  ;21;defender 
+6;Harry;Kane  ;28;forward
+4;N'Golo;Kanté  ;30;midfielder
+15;Michał;Karbownik  ;20;defender 
+12;Michael;Keane  ;28;defender 
+1;Naby;Keïta  ;26;midfielder
+1;Caoimhin;Kelleher  ;22;goalkeeper
+14;Martin;Kelly  ;31;defender 
+4;Kepa;Kepa;27;goalkeeper
+17;Kaine;Kesler  ;18;defender 
+15;Reda;Khadra  ;20;midfielder
+18;Kiko;Casilla  ;35;goalkeeper
+7;Max;Kilman  ;24;defender 
+12;Joshua;King  ;29;forward
+18;Mateusz;Klich  ;31;midfielder
+18;Robin;Koch  ;25;defender 
+20;Terence;Kongolo  ;27;defender 
+17;Ezri;Konsa  ;23;defender 
+1;Billy;Koumetio  ;18;defender 
+14;Cheikhou;Kouyaté  ;31;midfielder
+4;Mateo;Kovačić  ;27;midfielder
+13;Emil;Krafth  ;27;defender 
+8;Alexandre;Lacazette  ;30;forward
+15;Adam;Lallana  ;33;midfielder
+6;Érik;Lamela  ;29;forward
+15;Tariq;Lamptey  ;21;defender 
+13;Daniel;Langley  ;20;goalkeeper
+16;Manuel;Lanzini  ;28;midfielder
+2;Aymeric;Laporte  ;27;defender 
+13;Jamaal;Lascelles  ;27;defender 
+6;Marcel;Lavinier  ;20;defender 
+12;Žan;Luk Leban ;18;goalkeeper
+20;Mario;Lemina  ;28;midfielder
+8;Bernd;Leno  ;29;goalkeeper
+5;Thakgalo;Leshabela  ;22;midfielder
+11;Harry;Lewis  ;23;goalkeeper
+13;Jamal;Lewis  ;23;defender 
+3;Victor;Lindelöf  ;27;defender 
+17;Hayden;Lindley  ;19;midfielder
+16;Jesse;Lingard  ;28;midfielder
+19;Jake;Livermore  ;31;midfielder
+18;Llorente;Llorente;28;defender 
