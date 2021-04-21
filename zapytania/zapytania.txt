@@ -1,0 +1,55 @@
+-- zawodnicy
+SELECT PlayerID, t.TeamName AS Club, Position, CONCAT(FirstName,' ',Surname) AS Name, MarketValue AS 'Market value', Overall, Age
+FROM ezdollazbet.players p
+JOIN ezdollazbet.teams t
+	ON p.TeamID = t.TeamID
+-- WHERE t.TeamID = 1
+
+-- tabela
+SELECT TeamName AS Club, ts.Games AS Played, ts.Wins AS Won, ts.Draws AS Drawn, ts.Loses AS Lost, ts.Points
+FROM ezdollazbet.teams t
+JOIN ezdollazbet.teamstats ts
+	ON t.TeamID = ts.TeamID
+-- WHERE t.TeamID = 1
+ORDER BY ts.Points DESC
+
+-- trenerzy
+SELECT CoachID, CONCAT(FirstName,' ',Surname) AS Name, t.TeamName AS Club, Age
+FROM ezdollazbet.coaches c
+JOIN ezdollazbet.teams t
+	ON c.TeamID = t.TeamID
+
+-- konta klientow
+SELECT ClientID, Surname, a.Login, a.Password
+FROM ezdollazbet.clients c
+JOIN ezdollazbet.accounts a
+	ON c.Login = a.Login
+ORDER BY ClientID
+
+-- konta pracownikow
+SELECT WorkerID, Surname, a.Login, a.Password
+FROM ezdollazbet.workers w
+JOIN ezdollazbet.accounts a
+	ON w.Login = a.Login
+ORDER BY WorkerID
+
+-- zaklady danego klienta
+SELECT BetID, Stake
+FROM ezdollazbet.bookedbets b
+JOIN ezdollazbet.clients c
+	ON b.ClientID = c.ClientID
+WHERE b.ClientID = 1
+
+-- dostepne zaklady
+SELECT g.MatchDay AS Date, CONCAT(g.Host,' - ',g.Guest) AS 'Match', BetType AS 'Type', BettingOdd AS Odd
+FROM ezdollazbet.bets b
+JOIN ezdollazbet.games g
+	ON b.GameID = g.GameID
+WHERE g.MatchStatus = 'nierozpoczety' -- czy cos takiego
+	-- AND b.GameID = 1 -- dla konkretnego meczu
+
+-- mecze trwajace i zakonczone
+SELECT CONCAT(Host,' - ',Guest) AS 'Match', CONCAT(HostGoals,':',GuestGoals) AS Result, MatchDay AS 'Date', MatchStatus AS 'Status'
+FROM ezdollazbet.games
+WHERE MatchStatus = 'trwa' OR MatchStatus = 'zakonczony' -- czy cos takiego
+
