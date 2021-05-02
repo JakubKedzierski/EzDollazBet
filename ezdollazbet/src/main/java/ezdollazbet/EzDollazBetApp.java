@@ -2,7 +2,7 @@ package ezdollazbet;
 
 import java.io.IOException;
 
-import ezdollazbet.view.UserLayoutController;
+import ezdollazbet.view.StartUpController;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -20,10 +20,7 @@ public class EzDollazBetApp extends Application {
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("EzDollazBet");
-
-		initRootLayout();
-		initTabsLayout();
-		initUserLayout();
+		initUserStartUpDialog();
 	}
 
 	public void initTabsLayout() {
@@ -38,6 +35,34 @@ public class EzDollazBetApp extends Application {
 
 		}
 	}
+	
+	public boolean checkLoginEntry(String login,String password) {
+		return true;
+	}
+	
+	public void initLayout() {
+		initRootLayout();
+		initTabsLayout();
+		initUserLayout();
+	}
+	
+	public void initUserStartUpDialog() {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("view/UserLoginLayout.fxml"));
+			AnchorPane loginLayout = (AnchorPane) loader.load();
+			
+			StartUpController controller = loader.getController();
+			controller.setMainApp(this);
+
+			Scene scene = new Scene(loginLayout);
+			primaryStage.setScene(scene);
+			primaryStage.show();
+		} catch (IOException error) {
+			error.printStackTrace();
+			this.stop();
+		}
+	}
 
 	public void initRootLayout() {
 		try {
@@ -48,6 +73,7 @@ public class EzDollazBetApp extends Application {
 			Scene scene = new Scene(rootLayout);
 			primaryStage.setScene(scene);
 			primaryStage.show();
+			primaryStage.centerOnScreen();
 		} catch (IOException error) {
 			error.printStackTrace();
 			this.stop();
@@ -60,9 +86,6 @@ public class EzDollazBetApp extends Application {
 			loader.setLocation(getClass().getResource("view/UserLayout.fxml"));
 			AnchorPane userLayout = (AnchorPane) loader.load();
 			rootLayout.setLeft(userLayout);
-			
-			UserLayoutController controller = loader.getController();
-			controller.setMainApp(this);
 		} catch (IOException error) {
 			error.printStackTrace();
 			this.stop();
