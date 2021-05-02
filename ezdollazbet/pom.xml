@@ -4,4 +4,12 @@
   <artifactId>ezdollazbet</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>EzDollazBet</name>
+  <dependencies>
+  	<dependency>
+  		<groupId>org.projectlombok</groupId>
+  		<artifactId>lombok</artifactId>
+  		<version>1.18.20</version>
+  		<scope>provided</scope>
+  	</dependency>
+  </dependencies>
 </project>
