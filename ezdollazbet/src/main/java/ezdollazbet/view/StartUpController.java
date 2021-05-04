@@ -2,6 +2,7 @@ package ezdollazbet.view;
 
 import ezdollazbet.EzDollazBetApp;
 import javafx.application.Platform;
+import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -34,7 +35,15 @@ public class StartUpController {
 		validLogin.setErrorDecorationEnabled(false);
 		validLogin.registerValidator(loginField, Validator.createEmptyValidator("Pole nie mo¿e byæ puste"));
 		validLogin.errorDecorationEnabledProperty().bind(loginField.focusedProperty());
-		logInButton.disableProperty().bind(validLogin.invalidProperty());
+		
+		ValidationSupport validPass = new ValidationSupport();
+		validPass.setErrorDecorationEnabled(false);
+		validPass.registerValidator(passwordField, Validator.createEmptyValidator("Pole nie mo¿e byæ puste"));
+		validPass.errorDecorationEnabledProperty().bind(passwordField.focusedProperty());
+		
+		logInButton.disableProperty().bind( Bindings.or(
+				validLogin.invalidProperty(),
+				validPass.invalidProperty()));
 	}
 
 	@FXML
