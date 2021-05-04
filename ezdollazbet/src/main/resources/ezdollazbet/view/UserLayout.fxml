@@ -4,7 +4,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="900.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ezdollazbet.view.StartUpController">
+<AnchorPane prefHeight="900.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fitHeight="123.0" fitWidth="165.0" layoutX="68.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true" />
       <Label layoutX="68.0" layoutY="187.0" prefHeight="30.0" prefWidth="165.0" />
