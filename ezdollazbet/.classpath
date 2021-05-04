@@ -24,7 +24,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="C:/Users/ikuba/.m2/repository/org/projectlombok/lombok/1.18.16/lombok-1.18.16.jar" sourcepath="C:/Users/ikuba/.m2/repository/org/projectlombok/lombok/1.18.16/lombok-1.18.16-sources.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="jar:file:/C:/Users/ikuba/.m2/repository/org/projectlombok/lombok/1.18.16/lombok-1.18.16-javadoc.jar!/"/>
@@ -36,5 +35,8 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Program Files (x86)/MySQL/Connector J 8.0/mysql-connector-java-8.0.23.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ikuba/Downloads/controlsfx-11.1.0.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFX15"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

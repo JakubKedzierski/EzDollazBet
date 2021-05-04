@@ -15,13 +15,13 @@ public class DBUtil {
 	@Getter
 	private static Connection connection = null;
 
-	public static void connectDb() throws ClassNotFoundException, SQLException {
+	public static void connectDb() throws SQLException {
 		try {
 			Class.forName(JDBC_DRIVER);
 		} catch (ClassNotFoundException error) {
 			System.out.println("JDBC Driver not found");
 			error.printStackTrace();
-			throw error;
+			throw new SQLException("JDBC Driver not found");
 		}
 
 		String username = "root";
@@ -48,27 +48,21 @@ public class DBUtil {
 		}
 	}
 	
-	public static void updateQuery(String queryStatement) {
+	public static void updateQuery(String queryStatement) throws SQLException {
+	    if(connection == null || connection.isClosed()) connectDb();
 		
+	    Statement statement = connection.createStatement();  
+	    statement.executeUpdate(queryStatement);
+	    
 	}
-
-	public static void main(String args[]) {
-		try {
-			DBUtil.connectDb();
-
-			Statement stmt;
-			stmt = connection.createStatement();
-
-			ResultSet rs = stmt.executeQuery("select * from players");
-			while (rs.next())
-				System.out.println(rs.getInt(1) + "  " + rs.getString(2) + "  " + rs.getString(3));
-			
-			DBUtil.disconnectDb();
-		} catch (ClassNotFoundException | SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-
+	
+	public static ResultSet selectQuery(String queryStatement) throws SQLException{
+	    if(connection == null || connection.isClosed()) connectDb();
+	    
+	    Statement statement = connection.createStatement();  
+	    ResultSet result = statement.executeQuery(queryStatement);
+	    
+	    return result;
 	}
 
 }

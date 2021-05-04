@@ -36,10 +36,7 @@ public class EzDollazBetApp extends Application {
 		}
 	}
 	
-	public boolean checkLoginEntry(String login,String password) {
-		return true;
-	}
-	
+
 	public void initLayout() {
 		initRootLayout();
 		initTabsLayout();
