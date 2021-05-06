@@ -1,7 +1,9 @@
 package ezdollazbet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
+import ezdollazbet.models.ClientDAO;
 import ezdollazbet.view.StartUpController;
 import javafx.application.Application;
 import javafx.application.Platform;
