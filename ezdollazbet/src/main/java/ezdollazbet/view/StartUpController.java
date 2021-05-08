@@ -3,6 +3,7 @@ package ezdollazbet.view;
 import ezdollazbet.EzDollazBetApp;
 import ezdollazbet.models.AcountDAO;
 import ezdollazbet.models.ClientDAO;
+import ezdollazbet.models.UserSession;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
@@ -19,10 +20,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.util.Pair;
 import lombok.Setter;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Calendar;
@@ -31,6 +34,7 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.prefs.Preferences;
 
 import org.controlsfx.validation.Severity;
 import org.controlsfx.validation.ValidationSupport;
@@ -72,6 +76,7 @@ public class StartUpController {
 		loginField.setPromptText("Login");
 		passwordField.setPromptText("Has³o");
 		Platform.runLater(() -> loginField.requestFocus());
+		
 	}
 	
 
@@ -88,6 +93,17 @@ public class StartUpController {
 		}
 		if(goodCredentials) {
 			mainApp.initLayout();
+			ResultSet client;
+			try {
+				client = ClientDAO.getClientByLogin(login);
+				client.next();
+				UserSession session = UserSession.getSession(login, client.getInt("ClientID"));
+				System.out.println(session.getUserId());
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}else {
 			loginField.setText("");
 			passwordField.setText("");

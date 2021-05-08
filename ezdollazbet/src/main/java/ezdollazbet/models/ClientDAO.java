@@ -1,5 +1,6 @@
 package ezdollazbet.models;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ClientDAO {
@@ -11,6 +12,12 @@ public class ClientDAO {
 				 "'0');"; 
 		
 		DBUtil.updateQuery(insertClientStatement);
+	}
+	
+	public static ResultSet getClientByLogin(String login) throws SQLException {
+		String clientStatement = "SELECT * FROM clients WHERE Login='" + login +"'";
+		System.out.println(clientStatement);
+		return DBUtil.selectQuery(clientStatement);
 	}
 	
 

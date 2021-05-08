@@ -2,6 +2,8 @@ package ezdollazbet;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.prefs.BackingStoreException;
+import java.util.prefs.Preferences;
 
 import ezdollazbet.models.ClientDAO;
 import ezdollazbet.view.StartUpController;
@@ -23,19 +25,6 @@ public class EzDollazBetApp extends Application {
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("EzDollazBet");
 		initUserStartUpDialog();
-	}
-
-	public void initTabsLayout() {
-		try {
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("view/TabsLayout.fxml"));
-			AnchorPane tabLayout = (AnchorPane) loader.load();
-			rootLayout.setCenter(tabLayout);
-		} catch (IOException error) {
-			error.printStackTrace();
-			this.stop();
-
-		}
 	}
 	
 
@@ -76,6 +65,20 @@ public class EzDollazBetApp extends Application {
 		} catch (IOException error) {
 			error.printStackTrace();
 			this.stop();
+		}
+	}
+	
+	public void initTabsLayout() {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("view/TabsLayout.fxml"));
+			AnchorPane tabLayout = (AnchorPane) loader.load();
+			rootLayout.setCenter(tabLayout);
+			
+		} catch (IOException error) {
+			error.printStackTrace();
+			this.stop();
+
 		}
 	}
 	
