@@ -1,12 +1,15 @@
 package ezdollazbet.view;
 
 import ezdollazbet.EzDollazBetApp;
+import ezdollazbet.models.AcountDAO;
 import ezdollazbet.models.ClientDAO;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
@@ -77,8 +80,23 @@ public class StartUpController {
 
 		String login = loginField.getText();
 		String password = passwordField.getText();
-
-		mainApp.initLayout();
+		boolean goodCredentials = false;
+		try {
+			goodCredentials = AcountDAO.areCredentialsGood(login, password);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		if(goodCredentials) {
+			mainApp.initLayout();
+		}else {
+			loginField.setText("");
+			passwordField.setText("");
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setHeaderText("Nie znaleziono takiego u¿ytkownika.");
+			alert.setContentText("Sprobuj zalogowaæ siê ponownie");
+			alert.show();
+		}
+		
 
 	}
 	

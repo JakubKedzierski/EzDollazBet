@@ -13,5 +13,7 @@ public class ClientDAO {
 		DBUtil.updateQuery(insertClientStatement);
 	}
 	
+
+	
 	
 }
