@@ -19,9 +19,9 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ScrollPane fx:id="matchesScroller" layoutX="65.0" layoutY="44.0" prefHeight="736.0" prefWidth="769.0">
+                        <ScrollPane fx:id="matchesScroller" layoutX="65.0" layoutY="44.0" prefHeight="720.0" prefWidth="770.0">
                            <content>
-                              <VBox fx:id="matchesBox" prefHeight="124.0" prefWidth="767.0" />
+                              <VBox fx:id="matchesBox" prefHeight="120.0" prefWidth="760.0" />
                            </content>
                         </ScrollPane>
                      </children></AnchorPane>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <games GameID='1' Host='1' Guest='2' MatchStatus='awaiting'/> 
+	<games GameID='2' Host='3' Guest='4' MatchStatus='awaiting'/> 
+	<games GameID='3' Host='1' Guest='2' HostGoals='2' GuestGoals='2' MatchDay='2021-03-12 21:30:00' MatchStatus='happened'/> 
+	<teams TeamID='1' TeamName='Liverpool' City='Liverpool'/> 
+	<teams TeamID='2' TeamName='Manchester City' City='Manchester'/> 
+	<teams TeamID='3' TeamName='Manchester United' City='Manchester'/> 
+	<teams TeamID='4' TeamName='Chelsea' City='Londyn'/> 
+</dataset>

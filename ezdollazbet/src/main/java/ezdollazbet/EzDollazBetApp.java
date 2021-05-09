@@ -28,7 +28,7 @@ public class EzDollazBetApp extends Application {
 	}
 	
 
-	public void initLayout() {
+	public void initLayout() {		
 		initRootLayout();
 		initTabsLayout();
 		initUserLayout();
@@ -39,6 +39,7 @@ public class EzDollazBetApp extends Application {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("view/UserLoginLayout.fxml"));
 			AnchorPane loginLayout = (AnchorPane) loader.load();
+			loginLayout.getStylesheets().add(EzDollazBetApp.class.getResource("view/box.css").toExternalForm());
 			
 			StartUpController controller = loader.getController();
 			controller.setMainApp(this);
@@ -57,6 +58,7 @@ public class EzDollazBetApp extends Application {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("view/RootLayout.fxml"));
 			rootLayout = (BorderPane) loader.load();
+			rootLayout.getStylesheets().add(EzDollazBetApp.class.getResource("view/box.css").toExternalForm());
 
 			Scene scene = new Scene(rootLayout);
 			primaryStage.setScene(scene);
