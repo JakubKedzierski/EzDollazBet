@@ -16,7 +16,6 @@ public class ClientDAO {
 	
 	public static ResultSet getClientByLogin(String login) throws SQLException {
 		String clientStatement = "SELECT * FROM clients WHERE Login='" + login +"'";
-		System.out.println(clientStatement);
 		return DBUtil.selectQuery(clientStatement);
 	}
 	

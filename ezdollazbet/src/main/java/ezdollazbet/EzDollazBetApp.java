@@ -74,7 +74,6 @@ public class EzDollazBetApp extends Application {
 			loader.setLocation(getClass().getResource("view/TabsLayout.fxml"));
 			AnchorPane tabLayout = (AnchorPane) loader.load();
 			rootLayout.setCenter(tabLayout);
-			
 		} catch (IOException error) {
 			error.printStackTrace();
 			this.stop();
