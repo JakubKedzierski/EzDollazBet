@@ -22,6 +22,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
@@ -78,6 +79,24 @@ public class StartUpController {
 		passwordField.setPromptText("Has³o");
 		Platform.runLater(() -> loginField.requestFocus());
 
+		loginField.addEventHandler(KeyEvent.KEY_PRESSED, ev -> {
+			if (ev.getCode() == KeyCode.ENTER || ev.getCode() == KeyCode.DOWN) {
+				passwordField.requestFocus();
+				ev.consume();
+			}
+		});
+
+		passwordField.addEventHandler(KeyEvent.KEY_PRESSED, ev -> {
+			if (ev.getCode() == KeyCode.ENTER) {
+				logInButton.fire();
+				ev.consume();
+			}
+			if (ev.getCode() == KeyCode.UP) {
+				loginField.requestFocus();
+				ev.consume();
+			}
+		});
+
 	}
 
 	@FXML
@@ -123,6 +142,7 @@ public class StartUpController {
 	@FXML
 	private void register() {
 		Dialog<HashMap<String, String>> dialog = new Dialog<>();
+
 		dialog.getDialogPane().getChildren().add(new Label("testtt"));
 		dialog.setTitle("Rejestracja");
 		dialog.setHeaderText("Zarejestruj siê");
@@ -164,30 +184,30 @@ public class StartUpController {
 
 		Node loginButton = dialog.getDialogPane().lookupButton(loginButtonType);
 		loginButton.setDisable(true);
-		
+
 		loginButton.addEventFilter(ActionEvent.ACTION, event -> {
 			if (username.getText().isBlank()) {
-				event.consume(); 
+				event.consume();
 				warningText.setText("Niektore z pol s¹ puste!");
 				warningText.setVisible(true);
 			}
 			if (password.getText().isBlank()) {
-				event.consume(); 
+				event.consume();
 				warningText.setText("Niektore z pol s¹ puste!");
 				warningText.setVisible(true);
 			}
 			if (name.getText().isBlank()) {
-				event.consume(); 
+				event.consume();
 				warningText.setText("Niektore z pol s¹ puste!");
 				warningText.setVisible(true);
 			}
 			if (surname.getText().isBlank()) {
-				event.consume(); 
+				event.consume();
 				warningText.setText("Niektore z pol s¹ puste!");
 				warningText.setVisible(true);
-			}	
+			}
 			if (birthData.getValue() == null) {
-				event.consume(); 
+				event.consume();
 				warningText.setText("Niektore z pol s¹ puste!");
 				warningText.setVisible(true);
 			}
