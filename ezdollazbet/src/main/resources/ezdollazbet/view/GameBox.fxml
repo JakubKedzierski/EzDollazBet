@@ -39,15 +39,15 @@
          </font></Label>
       <ButtonBar layoutX="417.0" layoutY="67.0" prefHeight="40.0" prefWidth="299.0">
         <buttons>
-            <Button fx:id="buttonBookWin" mnemonicParsing="false" onAction="#bookWin" prefHeight="30.0" prefWidth="131.0" text="Button" visible="false">
+            <Button fx:id="buttonBookWin" mnemonicParsing="false" onAction="#book" prefHeight="30.0" prefWidth="131.0" text="Button" visible="false">
                <font>
                   <Font size="13.0" />
                </font></Button>
-          <Button fx:id="buttonBookDraw" mnemonicParsing="false" prefHeight="30.0" prefWidth="131.0" text="Button" visible="false">
+          <Button fx:id="buttonBookDraw" mnemonicParsing="false" onAction="#book" prefHeight="30.0" prefWidth="131.0" text="Button" visible="false">
                <font>
                   <Font size="13.0" />
                </font></Button>
-            <Button fx:id="buttonBookLose" mnemonicParsing="false" prefHeight="30.0" prefWidth="131.0" text="Button" visible="false">
+            <Button fx:id="buttonBookLose" mnemonicParsing="false" onAction="#book" prefHeight="30.0" prefWidth="131.0" text="Button" visible="false">
                <font>
                   <Font size="13.0" />
                </font></Button>

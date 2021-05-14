@@ -1,12 +1,33 @@
 package ezdollazbet.view;
 
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Optional;
+
 import ezdollazbet.models.Bet;
+import ezdollazbet.models.ClientDAO;
 import ezdollazbet.models.Game;
 import javafx.application.Platform;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.BooleanBinding;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.layout.GridPane;
 import lombok.Setter;
 
 public class BoxController {
@@ -94,9 +115,57 @@ public class BoxController {
 			guestLabel.setText(game.getGuest().get());
 		});
 	}
+	private boolean isInvalid(String score) {
+		if(score == null || score.equals("")) return true;
+	    
+		double result = 0;
+		try { 
+			result = Double.parseDouble(score); 
+	    } catch(NumberFormatException e) { 
+	        return true; 
+	    } catch(NullPointerException e) {
+	        return true;
+	    }
+		if(result <= 0) {
+			return true;
+		}
+		
+		return false;
+	}
+	
+	private int bookWithStake() {
+		TextInputDialog bookDialog = new TextInputDialog("Obstawianie zak³adu");
+		((Button) bookDialog.getDialogPane().lookupButton(ButtonType.OK)).setText("Obstaw");
+		Button okButton = (Button) bookDialog.getDialogPane().lookupButton(ButtonType.OK);
+		 ((Button) bookDialog.getDialogPane().lookupButton(ButtonType.CANCEL)).setText("Cofnij");
+		TextField inputField = bookDialog.getEditor();
+		inputField.setPromptText("20");
+		
+		BooleanBinding isInvalid = Bindings.createBooleanBinding(() -> isInvalid(inputField.getText()), inputField.textProperty());
+		okButton.disableProperty().bind(isInvalid);
+		bookDialog.setHeaderText("Obstawiasz mecz: " + game.getHost().get() + " - " + game.getGuest().get() 
+				+ "\nWpisz kwotê jak¹ chcesz obstawiæ");
+		
+		Optional<String> result = bookDialog.showAndWait();
+		int stake = 0;
+		if(result.isPresent()) 
+			stake = Integer.parseInt(result.get());
+		
+        return stake;
+	}
 
 	@FXML
-	private void bookWin() {
+	private void book(Event e) {
+		Object button = e.getSource();
+		int stake = bookWithStake();
+		if(stake == 0) return;
+		
+		if(button.equals(buttonBookWin)) {
+			
+		}else if (button.equals(buttonBookDraw)) {
+			
+		}else {
 
+		}
 	}
 }
