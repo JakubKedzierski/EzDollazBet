@@ -14,9 +14,23 @@ public class ClientDAO {
 		DBUtil.updateQuery(insertClientStatement);
 	}
 	
-	public static ResultSet getClientByLogin(String login) throws SQLException {
+	public static ResultSet getClientSetByLogin(String login) throws SQLException {
 		String clientStatement = "SELECT * FROM clients WHERE Login='" + login +"'";
 		return DBUtil.selectQuery(clientStatement);
+	}
+	
+	public static Client getClientByLogin(String login) throws SQLException {
+		ResultSet set = ClientDAO.getClientSetByLogin(login);
+		set.next();
+		Client client = new Client();
+		client.setAge(set.getInt("Age"));
+		client.setBalance(set.getDouble("Balance"));
+		client.setFirstName(set.getString("FirstName"));
+		client.setLastName(set.getString("Surname"));
+		client.setLogin(set.getString("Login"));
+		client.setId(set.getInt("ClientID"));
+		
+		return client;
 	}
 	
 

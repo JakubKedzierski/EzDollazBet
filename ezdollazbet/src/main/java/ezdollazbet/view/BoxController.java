@@ -6,8 +6,10 @@ import java.util.HashMap;
 import java.util.Optional;
 
 import ezdollazbet.models.Bet;
+import ezdollazbet.models.Client;
 import ezdollazbet.models.ClientDAO;
 import ezdollazbet.models.Game;
+import ezdollazbet.models.UserSession;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
@@ -18,6 +20,8 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
@@ -159,6 +163,21 @@ public class BoxController {
 		Object button = e.getSource();
 		int stake = bookWithStake();
 		if(stake == 0) return;
+		String clientLogin = UserSession.getSession().getLogin();
+		Client client = new Client();
+		try {
+			client = ClientDAO.getClientByLogin(clientLogin);
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+
+		if(client.getBalance().get() < stake) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setHeaderText("Nie masz odpowiedniej iloœci pieniêdzy na koncie");
+			alert.setContentText("Brak wystarczaj¹cej iloœci pieniêdzy na koncie.\nZak³ad zostanie anulowany");
+			alert.setTitle("B³¹d przy tworzeniu zak³adu");
+			alert.showAndWait();
+		}
 		
 		if(button.equals(buttonBookWin)) {
 			

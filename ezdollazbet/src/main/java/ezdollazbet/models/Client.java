@@ -1,22 +1,24 @@
 package ezdollazbet.models;
 
+import java.util.Date;
+
 import javafx.beans.property.*;
 import lombok.Getter;
 import lombok.Setter;
 
 public class Client {
-	@Getter @Setter
+	@Getter 
 	private IntegerProperty clientID;
-	@Getter @Setter
+	@Getter 
 	private StringProperty login;
-	@Getter @Setter
+	@Getter 
 	private StringProperty firstName;
-	@Getter @Setter
+	@Getter 
 	private StringProperty lastName;
-	@Getter @Setter
+	@Getter 
 	private IntegerProperty age;
-	@Getter @Setter
-	private IntegerProperty balance;
+	@Getter 
+	private DoubleProperty balance;
 	
 	public Client() {
 		this.clientID = new SimpleIntegerProperty();
@@ -24,6 +26,26 @@ public class Client {
 		this.firstName  = new SimpleStringProperty();
 		this.lastName = new SimpleStringProperty();
 		this.age = new SimpleIntegerProperty();
-		this.balance = new SimpleIntegerProperty();
+		this.balance = new SimpleDoubleProperty();
 	}
+	
+	public void setId(int id) {
+		this.clientID.set(id);
+	}
+	public void setLogin(String login) {
+		this.login.set(login);
+	}
+	public void setFirstName(String firstName) {
+		this.firstName.set(firstName);
+	}
+	public void setLastName(String lastName) {
+		this.lastName.set(lastName);
+	}
+	public void setAge(int age) {
+		this.age.set(age);
+	}
+    public void setBalance(double balance){
+        this.balance.set(balance);
+    }
+
 }

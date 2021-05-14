@@ -115,7 +115,7 @@ public class StartUpController {
 		if (goodCredentials) {
 			ResultSet client;
 			try {
-				client = ClientDAO.getClientByLogin(login);
+				client = ClientDAO.getClientSetByLogin(login);
 				client.next();
 				UserSession session = UserSession.getSession(login, client.getInt("ClientID"));
 			} catch (SQLException e) {

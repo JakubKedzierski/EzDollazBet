@@ -22,6 +22,9 @@ public final class UserSession {
 		}
 		return instance;
 	}
+	public static UserSession getSession() {
+		return instance;
+	}
 
 	public void cleanUserSession() {
 		login = null;
