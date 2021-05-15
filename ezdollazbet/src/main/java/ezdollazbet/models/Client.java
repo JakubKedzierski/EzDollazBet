@@ -47,5 +47,10 @@ public class Client {
     public void setBalance(double balance){
         this.balance.set(balance);
     }
+    public void decrementBalance(double value) {
+    	this.balance.set(balance.get()-value);
+
+    	if(this.balance.get() < 0) throw new IllegalArgumentException("Balance below 0");
+    }
 
 }

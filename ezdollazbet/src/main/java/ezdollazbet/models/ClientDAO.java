@@ -33,6 +33,17 @@ public class ClientDAO {
 		return client;
 	}
 	
+	public static void updateClient(Client client) throws SQLException{
+		String statement = "UPDATE clients "
+				+ "SET Balance = '"+client.getBalance().get() +"' , "
+				+ "Age = '" + client.getAge().get() + "' , "
+				+ "Surname = '" + client.getLastName().get() + "' , " 
+				+ "FirstName = '" + client.getFirstName().get() + "' , " 
+				+ "Login = '" + client.getLogin().get() + "' "
+				+ "WHERE (ClientID = '" + client.getClientID().get() + "');";
+		DBUtil.updateQuery(statement);
+	}
+	
 
 	
 	

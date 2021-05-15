@@ -24,6 +24,7 @@ public class EzDollazBetApp extends Application {
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("EzDollazBet");
+		this.primaryStage.setResizable(false);
 		initUserStartUpDialog();
 	}
 	

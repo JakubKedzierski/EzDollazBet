@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Optional;
 
 import ezdollazbet.models.Bet;
+import ezdollazbet.models.BetDAO;
 import ezdollazbet.models.Client;
 import ezdollazbet.models.ClientDAO;
 import ezdollazbet.models.Game;
@@ -57,10 +58,9 @@ public class BoxController {
 	private Label label2;
 	@FXML
 	private Label label3;
-	
+
 	@FXML
 	private Label emptyBets;
-	
 
 	@FXML
 	private Label data;
@@ -77,12 +77,12 @@ public class BoxController {
 	}
 
 	public void initializeBet() {
-		if(game.getMatchDay().get()!=null) {
+		if (game.getMatchDay().get() != null) {
 			Platform.runLater(() -> {
 				data.setVisible(true);
 				data.setText(game.getMatchDay().get().toString());
 			});
-			
+
 		}
 
 		if (betList != null) {
@@ -119,72 +119,86 @@ public class BoxController {
 			guestLabel.setText(game.getGuest().get());
 		});
 	}
+
 	private boolean isInvalid(String score) {
-		if(score == null || score.equals("")) return true;
-	    
+		if (score == null || score.equals(""))
+			return true;
+
 		double result = 0;
-		try { 
-			result = Double.parseDouble(score); 
-	    } catch(NumberFormatException e) { 
-	        return true; 
-	    } catch(NullPointerException e) {
-	        return true;
-	    }
-		if(result <= 0) {
+		try {
+			result = Double.parseDouble(score);
+		} catch (NumberFormatException e) {
+			return true;
+		} catch (NullPointerException e) {
 			return true;
 		}
-		
+		if (result <= 0) {
+			return true;
+		}
+
 		return false;
 	}
-	
+
 	private int bookWithStake() {
 		TextInputDialog bookDialog = new TextInputDialog("Obstawianie zak³adu");
 		((Button) bookDialog.getDialogPane().lookupButton(ButtonType.OK)).setText("Obstaw");
 		Button okButton = (Button) bookDialog.getDialogPane().lookupButton(ButtonType.OK);
-		 ((Button) bookDialog.getDialogPane().lookupButton(ButtonType.CANCEL)).setText("Cofnij");
+		((Button) bookDialog.getDialogPane().lookupButton(ButtonType.CANCEL)).setText("Cofnij");
 		TextField inputField = bookDialog.getEditor();
 		inputField.setPromptText("20");
-		
-		BooleanBinding isInvalid = Bindings.createBooleanBinding(() -> isInvalid(inputField.getText()), inputField.textProperty());
+
+		BooleanBinding isInvalid = Bindings.createBooleanBinding(() -> isInvalid(inputField.getText()),
+				inputField.textProperty());
 		okButton.disableProperty().bind(isInvalid);
-		bookDialog.setHeaderText("Obstawiasz mecz: " + game.getHost().get() + " - " + game.getGuest().get() 
+		bookDialog.setHeaderText("Obstawiasz mecz: " + game.getHost().get() + " - " + game.getGuest().get()
 				+ "\nWpisz kwotê jak¹ chcesz obstawiæ");
-		
+
 		Optional<String> result = bookDialog.showAndWait();
 		int stake = 0;
-		if(result.isPresent()) 
+		if (result.isPresent())
 			stake = Integer.parseInt(result.get());
-		
-        return stake;
+
+		return stake;
 	}
 
 	@FXML
 	private void book(Event e) {
 		Object button = e.getSource();
 		int stake = bookWithStake();
-		if(stake == 0) return;
+		if (stake == 0)
+			return;
 		String clientLogin = UserSession.getSession().getLogin();
 		Client client = new Client();
 		try {
 			client = ClientDAO.getClientByLogin(clientLogin);
 		} catch (SQLException e1) {
 			e1.printStackTrace();
+			return;
 		}
 
-		if(client.getBalance().get() < stake) {
+		if (client.getBalance().get() < stake) {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setHeaderText("Nie masz odpowiedniej iloœci pieniêdzy na koncie");
 			alert.setContentText("Brak wystarczaj¹cej iloœci pieniêdzy na koncie.\nZak³ad zostanie anulowany");
 			alert.setTitle("B³¹d przy tworzeniu zak³adu");
 			alert.showAndWait();
+			return;
 		}
-		
-		if(button.equals(buttonBookWin)) {
-			
-		}else if (button.equals(buttonBookDraw)) {
-			
-		}else {
 
+		try {
+			for (Bet bet : betList) {
+				if (button.equals(buttonBookWin) && bet.getBetType().get() == 1) {
+					BetDAO.bookBet(bet, client, stake);
+				} else if (button.equals(buttonBookDraw) && bet.getBetType().get() == 0) {
+					BetDAO.bookBet(bet, client, stake);
+				} else if (button.equals(buttonBookLose) && bet.getBetType().get() == 2) {
+					BetDAO.bookBet(bet, client, stake);
+				}
+			}
+			client.decrementBalance(stake);
+			ClientDAO.updateClient(client);
+		} catch (SQLException exception) {
+			exception.printStackTrace();
 		}
 	}
 }

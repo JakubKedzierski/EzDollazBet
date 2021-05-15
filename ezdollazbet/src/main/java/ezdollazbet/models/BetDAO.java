@@ -28,4 +28,16 @@ public class BetDAO {
 		}
 		return betList;
 	}
+	
+	public static void bookBetByBetIdAndClientId(int betId, int clientId, int stake) throws SQLException{
+		String statement = "INSERT INTO bookedbets (ClientID,BetID,Stake) VALUES ("+
+				"'" +clientId + "', "+ "'" +betId + "', "+ "'" +stake + "');"; 
+		DBUtil.updateQuery(statement);
+	}
+	
+	public static void bookBet(Bet bet, Client client, int stake) throws SQLException {
+		int betId = bet.getBetId().get();
+		int clientId = client.getClientID().get();
+		BetDAO.bookBetByBetIdAndClientId(betId, clientId, stake);
+	}
 }
