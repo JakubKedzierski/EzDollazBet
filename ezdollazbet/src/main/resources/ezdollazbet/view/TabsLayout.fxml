@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="883.0" prefWidth="979.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ezdollazbet.view.UserInterfaceContoller">
+<AnchorPane prefHeight="885.0" prefWidth="1076.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ezdollazbet.view.UserInterfaceContoller">
    <children>
       <TabPane layoutX="140.0" layoutY="83.0" prefHeight="900.0" prefWidth="982.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
@@ -35,13 +35,13 @@
                      <children>
                         <TableView fx:id="statsTable" layoutX="7.0" layoutY="6.0" prefHeight="871.0" prefWidth="1041.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <columns>
-                              <TableColumn prefWidth="75.0" text="Miejsce" />
-                            <TableColumn prefWidth="363.0" text="Nazwa drużyny" />
-                            <TableColumn prefWidth="153.0" text="Rozegran mecze" />
-                              <TableColumn prefWidth="86.0" text="Wygrane" />
-                              <TableColumn prefWidth="84.0" text="Remisy" />
-                              <TableColumn minWidth="0.0" prefWidth="81.0" text="Przegrane" />
-                              <TableColumn prefWidth="134.0" text="Punkty" />
+                              <TableColumn fx:id="placeColumn" prefWidth="75.0" text="Miejsce" />
+                            <TableColumn fx:id="teamNameColumn" prefWidth="363.0" text="Nazwa drużyny" />
+                            <TableColumn fx:id="gamesColumn" prefWidth="153.0" text="Rozegran mecze" />
+                              <TableColumn fx:id="winsColumn" prefWidth="86.0" text="Wygrane" />
+                              <TableColumn fx:id="drawsColumn" prefWidth="84.0" text="Remisy" />
+                              <TableColumn fx:id="losesColumn" minWidth="0.0" prefWidth="81.0" text="Przegrane" />
+                              <TableColumn fx:id="pointsColumn" prefWidth="134.0" text="Punkty" />
                           </columns>
                         </TableView>
                      </children></AnchorPane>

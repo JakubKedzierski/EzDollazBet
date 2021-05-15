@@ -6,9 +6,13 @@ import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 
 import ezdollazbet.models.ClientDAO;
+import ezdollazbet.models.TeamStats;
+import ezdollazbet.models.TeamStatsDAO;
 import ezdollazbet.view.StartUpController;
+import ezdollazbet.view.UserInterfaceContoller;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -76,6 +80,12 @@ public class EzDollazBetApp extends Application {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("view/TabsLayout.fxml"));
 			AnchorPane tabLayout = (AnchorPane) loader.load();
+			
+			UserInterfaceContoller controller = loader.getController();
+			
+			ObservableList<TeamStats> teamStats = TeamStatsDAO.getAllTeamStats();
+			controller.setTeamStats(teamStats);
+			
 			rootLayout.setCenter(tabLayout);
 		} catch (IOException error) {
 			error.printStackTrace();
