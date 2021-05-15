@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="900.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ezdollazbet.view.UserInterfaceContoller">
+<AnchorPane prefHeight="883.0" prefWidth="979.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ezdollazbet.view.UserInterfaceContoller">
    <children>
-      <TabPane layoutX="140.0" layoutY="83.0" prefHeight="900.0" prefWidth="1200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <TabPane layoutX="140.0" layoutY="83.0" prefHeight="900.0" prefWidth="982.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
           <Tab text="   EzDollazBet  ">
             <content>
@@ -33,7 +33,7 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="statsTable" layoutX="100.0" layoutY="55.0" prefHeight="707.0" prefWidth="976.0">
+                        <TableView fx:id="statsTable" layoutX="7.0" layoutY="6.0" prefHeight="871.0" prefWidth="1041.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <columns>
                               <TableColumn prefWidth="75.0" text="Miejsce" />
                             <TableColumn prefWidth="363.0" text="Nazwa drużyny" />
