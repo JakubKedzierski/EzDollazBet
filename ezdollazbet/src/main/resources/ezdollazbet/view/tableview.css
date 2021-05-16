@@ -1,0 +1,10 @@
+.table-view{
+	-fx-background-radius:20;
+}
+
+.table-view .column-header,
+.table-view .column-header .filler,
+.table-view .column-header-background .filler {
+    -fx-background-color:rgb(83, 65, 65);
+	-fx-background-radius:30;
+}
