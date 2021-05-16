@@ -91,6 +91,9 @@ public class EzDollazBetApp extends Application {
 			error.printStackTrace();
 			this.stop();
 
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 	

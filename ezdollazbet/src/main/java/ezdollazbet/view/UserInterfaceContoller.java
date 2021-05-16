@@ -34,19 +34,19 @@ public class UserInterfaceContoller {
 	@FXML
 	private TableView<TeamStats> statsTable = new TableView<TeamStats>();
 	@FXML 
-	private TableColumn teamNameColumn;
+	private TableColumn<TeamStats, String> teamNameColumn;
 	@FXML 
-	private TableColumn gamesColumn;
+	private TableColumn<TeamStats, Integer> gamesColumn;
 	@FXML 
-	private TableColumn winsColumn;
+	private TableColumn<TeamStats, Integer> winsColumn;
 	@FXML 
-	private TableColumn drawsColumn;
+	private TableColumn<TeamStats, Integer> drawsColumn;
 	@FXML 
-	private TableColumn losesColumn;
+	private TableColumn<TeamStats, Integer> losesColumn;
 	@FXML 
-	private TableColumn pointsColumn;
+	private TableColumn<TeamStats, Integer> pointsColumn;
 	@FXML 
-	private TableColumn placeColumn;
+	private TableColumn<TeamStats, Integer> placeColumn;
 
 	@FXML
 	private void initialize() {
@@ -58,6 +58,7 @@ public class UserInterfaceContoller {
 		drawsColumn.setCellValueFactory(new PropertyValueFactory<TeamStats, Integer>("draws"));
 		losesColumn.setCellValueFactory(new PropertyValueFactory<TeamStats, Integer>("loses"));
 		pointsColumn.setCellValueFactory(new PropertyValueFactory<TeamStats, Integer>("points"));
+		placeColumn.setCellValueFactory(new PropertyValueFactory<TeamStats, Integer>("place"));
 
 
 		ObservableList<Game> gamesList = FXCollections.observableArrayList();

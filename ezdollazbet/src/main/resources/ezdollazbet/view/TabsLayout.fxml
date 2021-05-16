@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -35,14 +36,17 @@
                      <children>
                         <TableView fx:id="statsTable" layoutX="7.0" layoutY="6.0" prefHeight="871.0" prefWidth="1041.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <columns>
-                              <TableColumn fx:id="placeColumn" prefWidth="75.0" text="Miejsce" />
-                            <TableColumn fx:id="teamNameColumn" prefWidth="363.0" text="Nazwa drużyny" />
-                            <TableColumn fx:id="gamesColumn" prefWidth="153.0" text="Rozegran mecze" />
-                              <TableColumn fx:id="winsColumn" prefWidth="86.0" text="Wygrane" />
-                              <TableColumn fx:id="drawsColumn" prefWidth="84.0" text="Remisy" />
-                              <TableColumn fx:id="losesColumn" minWidth="0.0" prefWidth="81.0" text="Przegrane" />
-                              <TableColumn fx:id="pointsColumn" prefWidth="134.0" text="Punkty" />
+                              <TableColumn fx:id="placeColumn" editable="false" prefWidth="75.0" resizable="false" text="Miejsce" />
+                            <TableColumn fx:id="teamNameColumn" editable="false" prefWidth="363.0" resizable="false" text="Nazwa drużyny" />
+                            <TableColumn fx:id="gamesColumn" editable="false" prefWidth="153.0" resizable="false" text="Rozegran mecze" />
+                              <TableColumn fx:id="winsColumn" editable="false" prefWidth="86.0" resizable="false" text="Wygrane" />
+                              <TableColumn fx:id="drawsColumn" editable="false" prefWidth="84.0" resizable="false" text="Remisy" />
+                              <TableColumn fx:id="losesColumn" editable="false" minWidth="0.0" prefWidth="81.0" resizable="false" text="Przegrane" />
+                              <TableColumn fx:id="pointsColumn" editable="false" prefWidth="134.0" resizable="false" text="Punkty" />
                           </columns>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </TableView>
                      </children></AnchorPane>
               </content>
