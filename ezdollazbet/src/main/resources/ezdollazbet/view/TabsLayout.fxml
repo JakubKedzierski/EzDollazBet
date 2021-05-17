@@ -36,7 +36,7 @@
               <content>
                 <AnchorPane fx:id="statsPanel" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <BorderPane layoutX="22.0" layoutY="22.0" prefHeight="558.0" prefWidth="1032.0" AnchorPane.bottomAnchor="277.0" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="22.0">
+                        <BorderPane fx:id="tableStatsPane" layoutX="22.0" layoutY="22.0" prefHeight="558.0" prefWidth="1032.0" AnchorPane.bottomAnchor="277.0" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="22.0">
                            <center>
                               <TableView fx:id="statsTable" onMousePressed="#showTeamPlayers" prefHeight="705.0" prefWidth="1033.0" stylesheets="@tableview.css" BorderPane.alignment="CENTER">
                                 <columns>

@@ -1,6 +1,7 @@
 package ezdollazbet.view;
 
 import java.io.IOException;
+import java.lang.ModuleLayer.Controller;
 import java.sql.SQLException;
 
 import ezdollazbet.EzDollazBetApp;
@@ -25,9 +26,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
-public class UserInterfaceContoller {
+public class UserInterfaceContoller implements ViewRefresher {
 
 	@FXML
 	private ScrollPane matchesScroller;
@@ -51,6 +53,9 @@ public class UserInterfaceContoller {
 	private TableColumn<TeamStats, Integer> placeColumn;
 	@FXML
 	private AnchorPane statsPanel;
+	@FXML
+	private BorderPane tableStatsPane;
+	private AnchorPane playersView;
 
 	@FXML
 	private void initialize() {
@@ -104,8 +109,10 @@ public class UserInterfaceContoller {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(EzDollazBetApp.class.getResource("view/TeamPlayersView.fxml"));
 			try {
-				AnchorPane playersView = (AnchorPane) loader.load();
+				this.playersView = (AnchorPane) loader.load();
 				statsPanel.getChildren().setAll(playersView);
+				TeamPlayerViewController contoller = loader.getController();
+				contoller.setBackSite(this);
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
@@ -113,12 +120,13 @@ public class UserInterfaceContoller {
 		}
 	}
 	
-	public void goBack() {
-		statsPanel.getChildren().setAll(matchesBox);
-	}
-	
-	@FXML
 	public void setTeamStats(ObservableList<TeamStats> data) {
 		statsTable.setItems(data);
+	}
+
+	@Override
+	public void refreshView() {
+		statsPanel.getChildren().setAll(tableStatsPane);
+		
 	}
 }
