@@ -9,6 +9,8 @@ import ezdollazbet.models.Bet;
 import ezdollazbet.models.BetDAO;
 import ezdollazbet.models.Game;
 import ezdollazbet.models.GameDAO;
+import ezdollazbet.models.Player;
+import ezdollazbet.models.PlayerDAO;
 import ezdollazbet.models.TeamStats;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -113,8 +115,12 @@ public class UserInterfaceContoller implements ViewRefresher {
 				statsPanel.getChildren().setAll(playersView);
 				TeamPlayerViewController contoller = loader.getController();
 				contoller.setBackSite(this);
-				contoller.setTeamName(statsTable.getSelectionModel().getSelectedItem().getTeamName());
+				ObservableList<Player> playerList = PlayerDAO.getPlayersByTeamName(statsTable.getSelectionModel().getSelectedItem().getTeamName());
+				contoller.setData(playerList);
+			
 			} catch (IOException e1) {
+				e1.printStackTrace();
+			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
 
