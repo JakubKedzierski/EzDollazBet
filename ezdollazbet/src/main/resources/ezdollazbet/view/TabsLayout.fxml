@@ -34,11 +34,11 @@
           </Tab>
             <Tab text="   Statystyki ligiowe   ">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <AnchorPane fx:id="statsPanel" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <BorderPane prefHeight="856.0" prefWidth="1076.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <BorderPane layoutX="22.0" layoutY="22.0" prefHeight="558.0" prefWidth="1032.0" AnchorPane.bottomAnchor="277.0" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="22.0">
                            <center>
-                              <TableView fx:id="statsTable" prefHeight="871.0" prefWidth="1041.0" stylesheets="@tableview.css" BorderPane.alignment="CENTER">
+                              <TableView fx:id="statsTable" onMousePressed="#showTeamPlayers" prefHeight="705.0" prefWidth="1033.0" stylesheets="@tableview.css" BorderPane.alignment="CENTER">
                                 <columns>
                                     <TableColumn fx:id="placeColumn" editable="false" prefWidth="75.0" resizable="false" text="Miejsce" />
                                   <TableColumn fx:id="teamNameColumn" editable="false" prefWidth="363.0" resizable="false" text="Nazwa drużyny" />

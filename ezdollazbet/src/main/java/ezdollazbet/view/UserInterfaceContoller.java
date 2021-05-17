@@ -11,6 +11,7 @@ import ezdollazbet.models.GameDAO;
 import ezdollazbet.models.TeamStats;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -21,6 +22,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -33,20 +35,22 @@ public class UserInterfaceContoller {
 	private VBox matchesBox;
 	@FXML
 	private TableView<TeamStats> statsTable = new TableView<TeamStats>();
-	@FXML 
+	@FXML
 	private TableColumn<TeamStats, String> teamNameColumn;
-	@FXML 
+	@FXML
 	private TableColumn<TeamStats, Integer> gamesColumn;
-	@FXML 
+	@FXML
 	private TableColumn<TeamStats, Integer> winsColumn;
-	@FXML 
+	@FXML
 	private TableColumn<TeamStats, Integer> drawsColumn;
-	@FXML 
+	@FXML
 	private TableColumn<TeamStats, Integer> losesColumn;
-	@FXML 
+	@FXML
 	private TableColumn<TeamStats, Integer> pointsColumn;
-	@FXML 
+	@FXML
 	private TableColumn<TeamStats, Integer> placeColumn;
+	@FXML
+	private AnchorPane statsPanel;
 
 	@FXML
 	private void initialize() {
@@ -59,7 +63,6 @@ public class UserInterfaceContoller {
 		losesColumn.setCellValueFactory(new PropertyValueFactory<TeamStats, Integer>("loses"));
 		pointsColumn.setCellValueFactory(new PropertyValueFactory<TeamStats, Integer>("points"));
 		placeColumn.setCellValueFactory(new PropertyValueFactory<TeamStats, Integer>("place"));
-
 
 		ObservableList<Game> gamesList = FXCollections.observableArrayList();
 		try {
@@ -75,17 +78,16 @@ public class UserInterfaceContoller {
 				FXMLLoader loader = new FXMLLoader();
 				loader.setLocation(EzDollazBetApp.class.getResource("view/GameBox.fxml"));
 				AnchorPane gameBox = (AnchorPane) loader.load();
-				gameBox.setPadding(new Insets(20,20,20,20));
-				
+				gameBox.setPadding(new Insets(20, 20, 20, 20));
+
 				ObservableList<Bet> betList = BetDAO.getBetsByGame(game);
-				
+
 				BoxController controller = loader.getController();
 				controller.setGame(game);
 				controller.setBetList(betList);
 				controller.initializeBet();
 				matchesBox.getChildren().add(gameBox);
-				
-				
+
 			} catch (IOException error) {
 				error.printStackTrace();
 			} catch (SQLException e) {
@@ -95,7 +97,27 @@ public class UserInterfaceContoller {
 		}
 
 	}
+
+	@FXML
+	private void showTeamPlayers(MouseEvent e) {
+		if (e.getClickCount() == 2) {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(EzDollazBetApp.class.getResource("view/TeamPlayersView.fxml"));
+			try {
+				AnchorPane playersView = (AnchorPane) loader.load();
+				statsPanel.getChildren().setAll(playersView);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+
+		}
+	}
 	
+	public void goBack() {
+		statsPanel.getChildren().setAll(matchesBox);
+	}
+	
+	@FXML
 	public void setTeamStats(ObservableList<TeamStats> data) {
 		statsTable.setItems(data);
 	}
