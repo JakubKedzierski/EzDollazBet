@@ -113,6 +113,7 @@ public class UserInterfaceContoller implements ViewRefresher {
 				statsPanel.getChildren().setAll(playersView);
 				TeamPlayerViewController contoller = loader.getController();
 				contoller.setBackSite(this);
+				contoller.setTeamName(statsTable.getSelectionModel().getSelectedItem().getTeamName());
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}

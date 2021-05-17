@@ -36,17 +36,17 @@
               <content>
                 <AnchorPane fx:id="statsPanel" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <BorderPane fx:id="tableStatsPane" layoutX="22.0" layoutY="22.0" prefHeight="558.0" prefWidth="1032.0" AnchorPane.bottomAnchor="277.0" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="22.0">
+                        <BorderPane fx:id="tableStatsPane" layoutX="24.0" layoutY="29.0" prefHeight="553.0" prefWidth="1052.0" AnchorPane.bottomAnchor="274.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="29.0">
                            <center>
-                              <TableView fx:id="statsTable" onMousePressed="#showTeamPlayers" prefHeight="705.0" prefWidth="1033.0" stylesheets="@tableview.css" BorderPane.alignment="CENTER">
+                              <TableView fx:id="statsTable" onMousePressed="#showTeamPlayers" prefHeight="522.0" prefWidth="1017.0" stylesheets="@tableview.css" BorderPane.alignment="CENTER">
                                 <columns>
-                                    <TableColumn fx:id="placeColumn" editable="false" prefWidth="75.0" resizable="false" text="Miejsce" />
-                                  <TableColumn fx:id="teamNameColumn" editable="false" prefWidth="363.0" resizable="false" text="Nazwa drużyny" />
-                                  <TableColumn fx:id="gamesColumn" editable="false" prefWidth="153.0" resizable="false" text="Rozegran mecze" />
-                                    <TableColumn fx:id="winsColumn" editable="false" prefWidth="86.0" resizable="false" text="Wygrane" />
-                                    <TableColumn fx:id="drawsColumn" editable="false" prefWidth="84.0" resizable="false" text="Remisy" />
-                                    <TableColumn fx:id="losesColumn" editable="false" minWidth="0.0" prefWidth="81.0" resizable="false" text="Przegrane" />
-                                    <TableColumn fx:id="pointsColumn" editable="false" prefWidth="134.0" resizable="false" text="Punkty" />
+                                    <TableColumn fx:id="placeColumn" editable="false" prefWidth="95.0" resizable="false" text="Miejsce" />
+                                  <TableColumn fx:id="teamNameColumn" editable="false" prefWidth="376.0" resizable="false" text="Nazwa drużyny" />
+                                  <TableColumn fx:id="gamesColumn" editable="false" prefWidth="133.0" resizable="false" text="Rozegran mecze" />
+                                    <TableColumn fx:id="winsColumn" editable="false" prefWidth="92.0" resizable="false" text="Wygrane" />
+                                    <TableColumn fx:id="drawsColumn" editable="false" prefWidth="94.0" resizable="false" text="Remisy" />
+                                    <TableColumn fx:id="losesColumn" editable="false" minWidth="0.0" prefWidth="100.0" resizable="false" text="Przegrane" />
+                                    <TableColumn fx:id="pointsColumn" editable="false" prefWidth="121.0" resizable="false" text="Punkty" />
                                 </columns>
                                  <cursor>
                                     <Cursor fx:constant="HAND" />

@@ -5,14 +5,18 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ezdollazbet.view.TeamPlayerViewController">
+<AnchorPane prefHeight="741.0" prefWidth="984.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ezdollazbet.view.TeamPlayerViewController">
    <children>
-      <TableView layoutX="211.0" layoutY="172.0" prefHeight="200.0" prefWidth="200.0">
+      <TableView fx:id="playersTable" layoutX="70.0" layoutY="53.0" prefHeight="522.0" prefWidth="825.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
+          <TableColumn fx:id="firstNameColumn" prefWidth="184.0" text="Imie" />
+          <TableColumn fx:id="secondNameColumn" prefWidth="156.0" text="Nazwisko" />
+            <TableColumn fx:id="positionColumn" prefWidth="129.0" text="Pozycja" />
+            <TableColumn fx:id="marketValueColumn" prefWidth="123.0" text="Wartość rynkowa" />
+            <TableColumn fx:id="overallColumn" minWidth="0.0" prefWidth="104.0" text="Overall" />
+            <TableColumn fx:id="ageColumn" minWidth="0.0" prefWidth="128.0" text="Wiek" />
         </columns>
       </TableView>
-      <Button layoutX="274.0" layoutY="470.0" mnemonicParsing="false" onAction="#goBack" text="Button" />
+      <Button layoutX="440.0" layoutY="642.0" mnemonicParsing="false" onAction="#goBack" text="Button" />
    </children>
 </AnchorPane>
