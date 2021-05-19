@@ -1,9 +1,9 @@
 package ezdollazbet.view;
 
 import ezdollazbet.EzDollazBetApp;
-import ezdollazbet.models.AcountDAO;
-import ezdollazbet.models.ClientDAO;
 import ezdollazbet.models.UserSession;
+import ezdollazbet.models.dao.AcountDAO;
+import ezdollazbet.models.dao.ClientDAO;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
@@ -254,7 +254,4 @@ public class StartUpController {
 
 	}
 
-	private boolean validateRegistration() {
-		return true;
-	}
 }

@@ -1,8 +1,11 @@
-package ezdollazbet.models;
+package ezdollazbet.models.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import ezdollazbet.models.Bet;
+import ezdollazbet.models.Client;
+import ezdollazbet.models.Game;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

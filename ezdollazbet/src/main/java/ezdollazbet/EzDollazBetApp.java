@@ -2,14 +2,17 @@ package ezdollazbet;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 
-import ezdollazbet.models.ClientDAO;
 import ezdollazbet.models.TeamStats;
-import ezdollazbet.models.TeamStatsDAO;
+import ezdollazbet.models.dao.ClientDAO;
+import ezdollazbet.models.dao.TeamStatsDAO;
 import ezdollazbet.view.StartUpController;
 import ezdollazbet.view.UserInterfaceContoller;
+import ezdollazbet.view.UserLayoutController;
+import ezdollazbet.view.ViewRefresher;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
@@ -19,10 +22,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-public class EzDollazBetApp extends Application {
+public class EzDollazBetApp extends Application implements ViewRefresher {
 
 	private Stage primaryStage;
 	private BorderPane rootLayout;
+	private ArrayList<ViewRefresher> refreshers = new  ArrayList<ViewRefresher>();
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -82,6 +86,7 @@ public class EzDollazBetApp extends Application {
 			AnchorPane tabLayout = (AnchorPane) loader.load();
 			
 			UserInterfaceContoller controller = loader.getController();
+			controller.setRefresher(this);
 			
 			ObservableList<TeamStats> teamStats = TeamStatsDAO.getAllTeamStats();
 			controller.setTeamStats(teamStats);
@@ -102,6 +107,8 @@ public class EzDollazBetApp extends Application {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("view/UserLayout.fxml"));
 			AnchorPane userLayout = (AnchorPane) loader.load();
+			UserLayoutController controller = loader.getController();
+			refreshers.add(controller);
 			rootLayout.setLeft(userLayout);
 		} catch (IOException error) {
 			error.printStackTrace();
@@ -117,6 +124,15 @@ public class EzDollazBetApp extends Application {
 
 	public static void main(String[] args) {
 		launch(args);
+	}
+
+
+	@Override
+	public void refreshView() {
+		for(ViewRefresher refreher:refreshers) {
+			refreher.refreshView();
+		}
+		
 	}
 
 }

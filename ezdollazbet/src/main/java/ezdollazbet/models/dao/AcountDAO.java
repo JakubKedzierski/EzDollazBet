@@ -1,4 +1,4 @@
-package ezdollazbet.models;
+package ezdollazbet.models.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

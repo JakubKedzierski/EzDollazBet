@@ -6,11 +6,11 @@ import java.util.HashMap;
 import java.util.Optional;
 
 import ezdollazbet.models.Bet;
-import ezdollazbet.models.BetDAO;
 import ezdollazbet.models.Client;
-import ezdollazbet.models.ClientDAO;
 import ezdollazbet.models.Game;
 import ezdollazbet.models.UserSession;
+import ezdollazbet.models.dao.BetDAO;
+import ezdollazbet.models.dao.ClientDAO;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
@@ -70,6 +70,9 @@ public class BoxController {
 
 	@Setter
 	private ObservableList<Bet> betList;
+	
+	@Setter
+	private ViewRefresher refresher;
 
 	@FXML
 	private void initialize() {
@@ -200,5 +203,7 @@ public class BoxController {
 		} catch (SQLException exception) {
 			exception.printStackTrace();
 		}
+		
+		refresher.refreshView();
 	}
 }

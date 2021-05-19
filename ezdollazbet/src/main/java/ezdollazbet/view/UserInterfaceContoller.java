@@ -6,12 +6,12 @@ import java.sql.SQLException;
 
 import ezdollazbet.EzDollazBetApp;
 import ezdollazbet.models.Bet;
-import ezdollazbet.models.BetDAO;
 import ezdollazbet.models.Game;
-import ezdollazbet.models.GameDAO;
 import ezdollazbet.models.Player;
-import ezdollazbet.models.PlayerDAO;
 import ezdollazbet.models.TeamStats;
+import ezdollazbet.models.dao.BetDAO;
+import ezdollazbet.models.dao.GameDAO;
+import ezdollazbet.models.dao.PlayerDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
@@ -30,6 +30,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import lombok.Setter;
 
 public class UserInterfaceContoller implements ViewRefresher {
 
@@ -58,6 +59,8 @@ public class UserInterfaceContoller implements ViewRefresher {
 	@FXML
 	private BorderPane tableStatsPane;
 	private AnchorPane playersView;
+	@Setter
+	private ViewRefresher refresher;
 
 	@FXML
 	private void initialize() {
@@ -92,6 +95,7 @@ public class UserInterfaceContoller implements ViewRefresher {
 				BoxController controller = loader.getController();
 				controller.setGame(game);
 				controller.setBetList(betList);
+				controller.setRefresher(this);
 				controller.initializeBet();
 				matchesBox.getChildren().add(gameBox);
 
@@ -134,6 +138,7 @@ public class UserInterfaceContoller implements ViewRefresher {
 	@Override
 	public void refreshView() {
 		statsPanel.getChildren().setAll(tableStatsPane);
+		refresher.refreshView();
 		
 	}
 }

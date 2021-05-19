@@ -52,5 +52,11 @@ public class Client {
 
     	if(this.balance.get() < 0) throw new IllegalArgumentException("Balance below 0");
     }
+    
+    public void increacseBalance(double value) {
+    	this.balance.set(balance.get()+value);
+
+    	if(this.balance.get() < 0) throw new IllegalArgumentException("Balance below 0");
+    }
 
 }

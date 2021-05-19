@@ -1,7 +1,9 @@
-package ezdollazbet.models;
+package ezdollazbet.models.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import ezdollazbet.models.Client;
 
 public class ClientDAO {
 	public static void insertClient(String login,String name, String lastName, String password, int age) throws SQLException {

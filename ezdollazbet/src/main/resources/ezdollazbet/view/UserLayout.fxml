@@ -1,12 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="900.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="900.0" prefWidth="300.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ezdollazbet.view.UserLayoutController">
    <children>
-      <ImageView fitHeight="123.0" fitWidth="165.0" layoutX="68.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true" />
-      <Label layoutX="68.0" layoutY="187.0" prefHeight="30.0" prefWidth="165.0" />
+      <ImageView fx:id="logo" fitHeight="110.0" fitWidth="110.0" layoutX="96.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@user_24px.png" />
+         </image></ImageView>
+      <Label fx:id="userInformationLabel" alignment="CENTER" layoutX="35.0" layoutY="322.0" prefHeight="58.0" prefWidth="233.0" style="-fx-text-fill: black;" textAlignment="CENTER">
+         <font>
+            <Font size="25.0" />
+         </font></Label>
+      <Label fx:id="loginLabel" alignment="CENTER" layoutX="34.0" layoutY="228.0" prefHeight="58.0" prefWidth="233.0" style="-fx-text-fill: black;" textAlignment="CENTER">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="saldoLabel" alignment="CENTER" layoutX="45.0" layoutY="450.0" prefHeight="38.0" prefWidth="215.0" style="-fx-text-fill: black;" textAlignment="CENTER">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Button fx:id="changeClientButton" layoutX="84.0" layoutY="846.0" mnemonicParsing="false" onAction="#changeClientDetails" prefHeight="25.0" prefWidth="133.0" text="Zmień dane konta" />
+      <ImageView fx:id="bag" fitHeight="50.0" fitWidth="48.0" layoutX="128.0" layoutY="402.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@money_bag.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="58.0" fitWidth="72.0" layoutX="124.0" layoutY="672.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@money_trans.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="insertMoneyButton" layoutX="110.0" layoutY="642.0" mnemonicParsing="false" onAction="#insertMoney" text="Zasil konto">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
