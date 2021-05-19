@@ -34,4 +34,24 @@ public class GameDAO {
 
 		return gamesList;
 	}
+	
+	public static Game getGameByGameId(int gameId) throws SQLException {
+		String statement = "SELECT * FROM games Where GameID = " + gameId;
+		ResultSet games = DBUtil.selectQuery(statement);
+		Game game = new Game();
+		while (games.next()) {
+			
+			game.setId(games.getInt("GameID"));
+			
+			game.setHost(games.getString("Host"));
+			game.setGuest(games.getString("Guest"));
+			
+			game.setHostGoals(games.getInt("HostGoals"));
+			game.setGuestGoals(games.getInt("GuestGoals"));
+			game.setMatchDate(games.getDate("MatchDay"));
+			game.setMatchStatus(games.getString("MatchStatus"));
+
+		}
+		return game;
+	}
 }

@@ -16,6 +16,19 @@ public class BetDAO {
 		return DBUtil.selectQuery(statement);
 	}
 	
+	public static Bet getBetByBetId(int betId) throws SQLException {
+		String statement = "SELECT * FROM bets WHERE BetID = '" + betId +"';" ;
+		ResultSet set = DBUtil.selectQuery(statement);
+		Bet bet = new Bet();
+		while(set.next()) {
+			bet.setId(set.getInt("BetID"));
+			bet.setGameId(set.getInt("GameID"));
+			bet.setBetType(set.getInt("BetType"));
+			bet.setBettingOdd(set.getDouble("BettingOdd"));
+		}
+		return bet;
+	}
+	
 	public static ObservableList<Bet> getBetsByGame(Game game) throws SQLException {
 		int id = game.getId().intValue();
 		ResultSet set = BetDAO.getBetsSetByGameId(id);
