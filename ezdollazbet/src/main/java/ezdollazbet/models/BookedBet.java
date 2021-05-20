@@ -10,23 +10,19 @@ import lombok.Getter;
 
 public class BookedBet {
 	private SimpleStringProperty host = new SimpleStringProperty();
-	@Getter
+
 	private SimpleStringProperty guest = new SimpleStringProperty();
-	@Getter
+
 	private SimpleObjectProperty<Date> matchDay = new  SimpleObjectProperty<>();
-	@Getter
+
 	private SimpleStringProperty matchStatus = new SimpleStringProperty();
-	
-	@Getter
+
 	private SimpleDoubleProperty stake = new SimpleDoubleProperty();
 
-	@Getter
 	private SimpleIntegerProperty betType = new SimpleIntegerProperty();
-	
-	@Getter
+
 	private SimpleDoubleProperty bettingOdd = new SimpleDoubleProperty();
-	
-	@Getter
+
 	private SimpleDoubleProperty possibleWinStake = new SimpleDoubleProperty();
 	
 
@@ -52,9 +48,40 @@ public class BookedBet {
 	}
 	public void setStake(double stake) {
 		this.stake.set(stake);
+		if(!(bettingOdd.get() <= 0)) {
+			setPossibleWinStake(stake*bettingOdd.get());
+		}
 	}
 	public void setPossibleWinStake(double possibleWinStake) {
 		this.possibleWinStake.set(possibleWinStake);
 	}
+	
+	public String getHost() {
+		return this.host.get();
+	}
+	public String getGuest() {
+		return this.guest.get();
+	}
+
+    public Date getMatchDay(){
+    	return this.matchDay.get();
+    }
+    public String getMatchStatus() {
+    	return this.matchStatus.get();
+    }
+    
+	public int getBetType() {
+		return this.betType.get();
+	}
+	public double getBettingOdd() {
+		return this.bettingOdd.get();
+	}
+	public double getStake() {
+		return this.stake.get();
+	}
+	public double getPossibleWinStake() {
+		return this.possibleWinStake.get();
+	}
+
 
 }

@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Optional;
 
 import ezdollazbet.EzDollazBetApp;
+import ezdollazbet.models.BookedBet;
 import ezdollazbet.models.Client;
 import ezdollazbet.models.UserSession;
 import ezdollazbet.models.dao.ClientDAO;
@@ -47,9 +48,6 @@ public class UserLayoutController implements ViewRefresher {
 	private Label loginLabel;
 	@FXML
 	private Label saldoLabel;
-	
-	@FXML
-	private ListView userBetsList;
 	
 	@FXML
 	private Button changeClientButton;

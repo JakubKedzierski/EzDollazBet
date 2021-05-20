@@ -6,7 +6,10 @@ import java.util.ArrayList;
 import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 
+import ezdollazbet.models.BookedBet;
 import ezdollazbet.models.TeamStats;
+import ezdollazbet.models.UserSession;
+import ezdollazbet.models.dao.BookedBetDAO;
 import ezdollazbet.models.dao.ClientDAO;
 import ezdollazbet.models.dao.TeamStatsDAO;
 import ezdollazbet.view.StartUpController;
@@ -90,6 +93,10 @@ public class EzDollazBetApp extends Application implements ViewRefresher {
 			
 			ObservableList<TeamStats> teamStats = TeamStatsDAO.getAllTeamStats();
 			controller.setTeamStats(teamStats);
+			
+			UserSession session = UserSession.getSession();
+			ObservableList<BookedBet> bookedBets = BookedBetDAO.getBookedBetsByUserLogin(session.getLogin());
+			controller.setBookedBets(bookedBets);
 			
 			rootLayout.setCenter(tabLayout);
 		} catch (IOException error) {
