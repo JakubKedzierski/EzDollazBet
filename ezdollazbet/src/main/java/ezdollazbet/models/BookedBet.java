@@ -1,5 +1,7 @@
 package ezdollazbet.models;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Date;
 
 import javafx.beans.property.SimpleDoubleProperty;
@@ -53,7 +55,8 @@ public class BookedBet {
 		}
 	}
 	public void setPossibleWinStake(double possibleWinStake) {
-		this.possibleWinStake.set(possibleWinStake);
+		BigDecimal possibleWin=new BigDecimal(possibleWinStake).setScale(2,RoundingMode.UP);
+		this.possibleWinStake.set(possibleWin.doubleValue());
 	}
 	
 	public String getHost() {
