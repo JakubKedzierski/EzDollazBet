@@ -32,6 +32,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import lombok.Setter;
 
@@ -73,6 +74,11 @@ public class BoxController {
 	
 	@Setter
 	private ViewRefresher refresher;
+	
+	@FXML 
+	private ImageView logo;
+	@FXML 
+	private ImageView line;
 
 	@FXML
 	private void initialize() {
