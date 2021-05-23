@@ -2,6 +2,8 @@ package ezdollazbet.models.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 import ezdollazbet.models.Player;
 import javafx.collections.FXCollections;
@@ -13,9 +15,11 @@ public class PlayerDAO {
 		ObservableList<Player> playersList = FXCollections.observableArrayList();
 		String statement = 	 "SELECT * FROM ezdollazbet.players\r\n"
 				+ "Where\r\n"
-				+ "TeamID = (Select TeamID From teams Where TeamName = '" + teamName +"' ) ";
+				+ "TeamID = (Select TeamID From teams Where TeamName = ? ) ";
+		Map<Integer,String> arguments = new HashMap<Integer,String>();
+		arguments.put(1,teamName);
 		
-		ResultSet set = DBUtil.selectQuery(statement);
+		ResultSet set = DBUtil.safeSelectQuery(statement, arguments);
 		while(set.next()) {
 			Player player = new Player();
 			player.setAge(set.getInt("Age"));

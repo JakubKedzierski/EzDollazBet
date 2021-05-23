@@ -46,13 +46,21 @@ public class ClientDAO {
 	
 	public static void updateClient(Client client) throws SQLException{
 		String statement = "UPDATE clients "
-				+ "SET Balance = '"+client.getBalance().get() +"' , "
-				+ "Age = '" + client.getAge().get() + "' , "
-				+ "Surname = '" + client.getLastName().get() + "' , " 
-				+ "FirstName = '" + client.getFirstName().get() + "' , " 
-				+ "Login = '" + client.getLogin().get() + "' "
-				+ "WHERE (ClientID = '" + client.getClientID().get() + "');";
-		DBUtil.updateQuery(statement);
+				+ "SET Balance = ?, "
+				+ "Age = ?, "
+				+ "Surname = '?, " 
+				+ "FirstName = ?, " 
+				+ "Login = ? "
+				+ "WHERE (ClientID = ?);";
+		
+		Map<Integer,String> arguments = new HashMap<Integer,String>();
+		arguments.put(1, Double.toString(client.getBalance().get()));
+		arguments.put(2, Integer.toString(client.getAge().get()));
+		arguments.put(3, client.getLastName().get());
+		arguments.put(4,  client.getFirstName().get() );
+		arguments.put(5,  client.getLogin().get());
+		arguments.put(6,  Integer.toString(client.getClientID().get()));
+		DBUtil.safeUpdateQuery(statement, arguments);
 	}
 	
 

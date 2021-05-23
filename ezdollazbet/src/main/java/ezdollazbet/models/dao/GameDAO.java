@@ -2,6 +2,8 @@ package ezdollazbet.models.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 import ezdollazbet.models.Game;
 import javafx.collections.FXCollections;
@@ -36,8 +38,10 @@ public class GameDAO {
 	}
 	
 	public static Game getGameByGameId(int gameId) throws SQLException {
-		String statement = "SELECT * FROM games Where GameID = " + gameId;
-		ResultSet games = DBUtil.selectQuery(statement);
+		String statement = "SELECT * FROM games Where GameID = ?";
+		Map<Integer,String> arguments = new HashMap<Integer,String>();
+		arguments.put(1, Integer.toString(gameId));
+		ResultSet games = DBUtil.safeSelectQuery(statement, arguments);
 		Game game = new Game();
 		while (games.next()) {
 			
