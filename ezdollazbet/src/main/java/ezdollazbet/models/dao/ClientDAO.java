@@ -2,6 +2,8 @@ package ezdollazbet.models.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 import ezdollazbet.models.Client;
 
@@ -10,15 +12,22 @@ public class ClientDAO {
 		AcountDAO.insertAccount(login, password);
 		
 		String insertClientStatement = "INSERT INTO Clients (Login,FirstName,Surname,Age,Balance) VALUES ("+
-				"'" +login + "', "+ "'" +name + "', "+ "'" +lastName + "', "+   "'" +age + "', "+
-				 "'0');"; 
+				"?,?,?,?,'0');"; 
+		Map<Integer,String> arguments = new HashMap<Integer,String>();
+		arguments.put(1, login);
+		arguments.put(2, name);
+		arguments.put(3, lastName);
+		arguments.put(4, Integer.toString(age));
 		
-		DBUtil.updateQuery(insertClientStatement);
+		DBUtil.safeUpdateQuery(insertClientStatement, arguments);
 	}
 	
 	public static ResultSet getClientSetByLogin(String login) throws SQLException {
-		String clientStatement = "SELECT * FROM clients WHERE Login='" + login +"'";
-		return DBUtil.selectQuery(clientStatement);
+		String clientStatement = "SELECT * FROM clients WHERE Login= ? ;";
+		Map<Integer,String> arguments = new HashMap<Integer,String>();
+		arguments.put(1, login);
+		
+		return DBUtil.safeSelectQuery(clientStatement, arguments);
 	}
 	
 	public static Client getClientByLogin(String login) throws SQLException {

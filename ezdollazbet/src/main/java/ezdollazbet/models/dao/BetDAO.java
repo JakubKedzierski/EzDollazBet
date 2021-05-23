@@ -2,6 +2,8 @@ package ezdollazbet.models.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 import ezdollazbet.models.Bet;
 import ezdollazbet.models.Client;
@@ -12,13 +14,19 @@ import javafx.collections.ObservableList;
 public class BetDAO {
 	
 	public static ResultSet getBetsSetByGameId(int id) throws SQLException {
-		String statement = "SELECT * FROM bets WHERE GameID = '" + id +"';" ;
-		return DBUtil.selectQuery(statement);
+		String statement = "SELECT * FROM bets WHERE GameID = ? ;" ;
+		Map<Integer,String> arguments = new HashMap<Integer,String>();
+		arguments.put(1, Integer.toString(id));
+		
+		return DBUtil.safeSelectQuery(statement, arguments);
 	}
 	
 	public static Bet getBetByBetId(int betId) throws SQLException {
-		String statement = "SELECT * FROM bets WHERE BetID = '" + betId +"';" ;
-		ResultSet set = DBUtil.selectQuery(statement);
+		String statement = "SELECT * FROM bets WHERE BetID = ? ;" ;
+		Map<Integer,String> arguments = new HashMap<Integer,String>();
+		arguments.put(1, Integer.toString(betId));
+		
+		ResultSet set = DBUtil.safeSelectQuery(statement, arguments);
 		Bet bet = new Bet();
 		while(set.next()) {
 			bet.setId(set.getInt("BetID"));
@@ -46,9 +54,14 @@ public class BetDAO {
 	}
 	
 	public static void bookBetByBetIdAndClientId(int betId, int clientId, int stake) throws SQLException{
-		String statement = "INSERT INTO bookedbets (ClientID,BetID,Stake) VALUES ("+
-				"'" +clientId + "', "+ "'" +betId + "', "+ "'" +stake + "');"; 
-		DBUtil.updateQuery(statement);
+		String statement = "INSERT INTO bookedbets (ClientID,BetID,Stake) VALUES (?,?,?);"; 
+		
+		Map<Integer,String> arguments = new HashMap<Integer,String>();
+		arguments.put(1, Integer.toString(clientId));
+		arguments.put(2, Integer.toString(betId));
+		arguments.put(3, Integer.toString(stake));
+		
+		DBUtil.safeUpdateQuery(statement, arguments);
 	}
 	
 	public static void bookBet(Bet bet, Client client, int stake) throws SQLException {

@@ -2,9 +2,11 @@ package ezdollazbet.models.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Map;
 
 import lombok.Getter;
 
@@ -46,6 +48,29 @@ public class DBUtil {
 			error.printStackTrace();
 			throw error;
 		}
+	}
+	
+	public static void safeUpdateQuery(String sqlStatement, Map<Integer,String> arguments) throws SQLException {
+		if(connection == null || connection.isClosed()) connectDb();
+
+
+		PreparedStatement statement = connection.prepareStatement(sqlStatement);
+		for (Map.Entry<Integer,String> entry : arguments.entrySet())
+			statement.setString(entry.getKey(), entry.getValue());
+		
+		statement.executeUpdate();
+	}
+	
+	public static ResultSet safeSelectQuery(String sqlStatement, Map<Integer,String> arguments) throws SQLException {
+		if(connection == null || connection.isClosed()) connectDb();
+		
+		PreparedStatement statement = connection.prepareStatement(sqlStatement);
+		for (Map.Entry<Integer,String> entry : arguments.entrySet())
+			statement.setString(entry.getKey(), entry.getValue());
+		
+		ResultSet result = statement.executeQuery();
+		
+		return result;
 	}
 	
 	public static void updateQuery(String queryStatement) throws SQLException {

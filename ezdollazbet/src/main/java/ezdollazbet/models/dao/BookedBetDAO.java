@@ -1,6 +1,8 @@
 package ezdollazbet.models.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 import ezdollazbet.models.Bet;
 import ezdollazbet.models.BookedBet;
@@ -16,8 +18,11 @@ public class BookedBetDAO {
 		ObservableList<BookedBet> bookedBetsList = FXCollections.observableArrayList();
 		Client client = ClientDAO.getClientByLogin(userLogin);
 		String statement = "SELECT * FROM ezdollazbet.bookedbets \r\n"
-				+ "WHERE ClientID = " + client.getClientID().get();
-		ResultSet set = DBUtil.selectQuery(statement);
+				+ "WHERE ClientID =  ?;" ;
+		Map<Integer,String> arguments = new HashMap<Integer,String>();
+		arguments.put(1, Integer.toString(client.getClientID().get()));
+		
+		ResultSet set = DBUtil.safeSelectQuery(statement, arguments);
 		while(set.next()) {
 			Bet bet = BetDAO.getBetByBetId(set.getInt("BetID"));
 			Game game = GameDAO.getGameByGameId(bet.getGameId().get());
