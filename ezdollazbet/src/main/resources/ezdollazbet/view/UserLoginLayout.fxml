@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -24,5 +26,15 @@
          </font>
       </Button>
       <Label layoutX="112.0" layoutY="375.0" text="Jeśli nie masz konta stwórz nowe:" />
+      <ImageView fx:id="key" fitHeight="42.0" fitWidth="38.0" layoutX="55.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@user_win.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="user" fitHeight="35.0" fitWidth="30.0" layoutX="59.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@key_60px.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
