@@ -51,7 +51,7 @@ public class EzDollazBetApp extends Application implements ViewRefresher {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("view/UserLoginLayout.fxml"));
 			AnchorPane loginLayout = (AnchorPane) loader.load();
-			loginLayout.getStylesheets().add(EzDollazBetApp.class.getResource("view/box.css").toExternalForm());
+			loginLayout.getStylesheets().add(EzDollazBetApp.class.getResource("view/login.css").toExternalForm());
 			
 			StartUpController controller = loader.getController();
 			controller.setMainApp(this);
