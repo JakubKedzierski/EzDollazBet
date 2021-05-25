@@ -48,7 +48,7 @@ public class ClientDAO {
 		String statement = "UPDATE clients "
 				+ "SET Balance = ?, "
 				+ "Age = ?, "
-				+ "Surname = '?, " 
+				+ "Surname = ?, " 
 				+ "FirstName = ?, " 
 				+ "Login = ? "
 				+ "WHERE (ClientID = ?);";
